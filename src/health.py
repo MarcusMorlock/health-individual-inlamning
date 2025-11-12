@@ -3,5 +3,6 @@ from .io_utiles import load_csv_file
 
 
 class HealthAnalyzer:
-    def load_helth(csv_path: str):
-        return NotImplemented
+    def __init__(self, csv_path: str, clean: bool = True ):
+
+        self.df = load_csv_file(csv_path, clean=clean)
