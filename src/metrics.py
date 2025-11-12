@@ -1,10 +1,13 @@
 import pandas as pd
 
 # age,sex,height,weight,systolic_bp,cholesterol
+# id,age,sex,height,weight,systolic_bp,cholesterol,smoker,disease
+# columns = ["age","sex","height","weight","systolic_bp","cholesterol","smoker","disease"]
 
 def summery_of_csv(df: pd.DataFrame) -> pd.DataFrame:
     
     columns = ["age", "height", "weight", "systolic_bp", "cholesterol"]
+
     summery_of_csv = df[columns].agg(["sum", "mean", "median", "std", "min", "max"])
     
     return summery_of_csv
