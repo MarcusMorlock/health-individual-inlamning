@@ -1,6 +1,6 @@
 import pandas as pd
 from .io_utiles import load_csv_file
-from .metrics import(summery_of_csv, summery_of_csv_per_gender,smoker_per_gender,boostrap_ci)
+from .metrics import(summery_of_csv, summery_of_csv_per_gender,smoker_per_gender,bootstrap_ci)
 from .viz import(viz_smoker_per_gender,viz_weight_per_gender,viz_weight_vs_height)
 
 
@@ -23,9 +23,9 @@ class HealthAnalyser:
 
         return smoker_per_gender(self.df)
     
-    def boostrap_ci(self):
+    def bootstrap_ci(self, subject_to_test_in_df: str,n_boot:int = 1000):
 
-        return boostrap_ci(self.df)
+        return bootstrap_ci(self.df,subject_to_test_in_df,n_boot)
 
     #########
     

@@ -28,7 +28,7 @@ def smoker_per_gender(df: pd.DataFrame) -> pd.DataFrame:
     
     return smoker_per_gender
 
-def boostrap_ci(df: pd.DataFrame,subject_to_test_in_df: str,n_boot:int = 1000):
+def bootstrap_ci(df: pd.DataFrame,subject_to_test_in_df: str,n_boot:int = 1000):
 
     bp = df[subject_to_test_in_df].values
 
