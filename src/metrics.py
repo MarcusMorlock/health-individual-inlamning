@@ -28,8 +28,20 @@ def smoker_per_gender(df: pd.DataFrame) -> pd.DataFrame:
     
     return smoker_per_gender
 
-def weight_per_gender(df: pd.DataFrame) -> pd.DataFrame:
+def boostrap_ci(df: pd.DataFrame,subject_to_test_in_df: str,n_boot:int = 1000):
+
+    bp = df[subject_to_test_in_df].values
+
+    np.random.seed(519)
+
+    means = []
+
+    for _ in range(n_boot):
+        sample = np.random.choice(bp, size=len(bp), replace=True)
+        means.append(sample.mean())
+
+    lower = np.percentile(means, 2.5)
+    higher = np.percentile(means, 97.5)
 
 
-
-    return NotImplemented
+    return lower, higher
