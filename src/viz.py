@@ -29,6 +29,8 @@ def viz_smoker_per_gender(df :pd.DataFrame) -> plt.subplots:
 
     plt.tight_layout()
 
+    return fig, ax
+
 def viz_weight_per_gender(df: pd.DataFrame) -> plt.subplots:
 
     fig, ax = plt.subplots(figsize=(6, 5))
@@ -40,6 +42,24 @@ def viz_weight_per_gender(df: pd.DataFrame) -> plt.subplots:
     
     plt.suptitle("")
 
+    plt.tight_layout()
+    plt.show()
+
+    return fig, ax
+
+def viz_weight_vs_height(df: pd.DataFrame) -> plt.subplots:
+    fig, ax = plt.subplots(figsize=(6, 5))
+
+    colors = {"F": "red", "M": "blue"}
+
+    for sex in df["sex"].unique():
+        subset = df[df["sex"] == sex]
+        ax.scatter(subset["height"],subset["weight"], color=colors.get(sex, "gray"), label=sex, alpha=0.5)
+    
+    ax.set_xlabel("Längd (cm)")
+    ax.set_ylabel("Vikt (kg)")
+    ax.set_title("Scatterplot: Vikt vs Längd per kön")
+    ax.legend(title="Kön")
     plt.tight_layout()
     plt.show()
 
