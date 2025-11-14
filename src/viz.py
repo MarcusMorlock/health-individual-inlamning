@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
-from .metrics import (summery_of_csv,smoker_per_gender)
+from .metrics import (summery_of_csv,smoker_per_gender,summery_of_csv_per_gender)
 
 
 def viz_summery(df :pd.DataFrame):
@@ -28,5 +28,21 @@ def viz_smoker_per_gender(df :pd.DataFrame) -> plt.subplots:
     ax.legend()
 
     plt.tight_layout()
+
+def viz_weight_per_gender(df: pd.DataFrame) -> plt.subplots:
+
+    fig, ax = plt.subplots(figsize=(6, 5))
+
+    df.boxplot(column="weight", by="sex", ax=ax)
+
+    ax.set_title("Boxplot över vikt per kön")
+    ax.set_ylabel("Vikt (kg)")
+    
+    plt.suptitle("")
+
+    plt.tight_layout()
+    plt.show()
+
+    return fig, ax
 
 

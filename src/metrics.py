@@ -27,3 +27,9 @@ def smoker_per_gender(df: pd.DataFrame) -> pd.DataFrame:
     smoker_per_gender = df.groupby("sex").agg(Total=("sex", "count"), Smokers=("smokers_flaged", "sum"))
     
     return smoker_per_gender
+
+def weight_per_gender(df: pd.DataFrame) -> pd.DataFrame:
+
+
+
+    return NotImplemented
