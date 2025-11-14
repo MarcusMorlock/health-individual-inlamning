@@ -31,16 +31,22 @@ def viz_smoker_per_gender(df :pd.DataFrame) -> plt.subplots:
 
     return fig, ax
 
-def viz_weight_per_gender(df: pd.DataFrame) -> plt.subplots:
+def viz_disease_per_gender(df: pd.DataFrame) -> plt.subplots:
 
     fig, ax = plt.subplots(figsize=(6, 5))
 
-    df.boxplot(column="weight", by="sex", ax=ax)
+    ax.hist(df["disease"], bins=2, color="orange", edgecolor="black", alpha=0.5 )
 
-    ax.set_title("Boxplot över vikt per kön")
-    ax.set_ylabel("Vikt (kg)")
-    
-    plt.suptitle("")
+    ax.set_xticks([0, 1])
+    ax.set_xticklabels(["Frisk", "Sjuk"])
+    ax.set_xlabel("Status")
+    ax.set_ylabel("Antal personer")
+    ax.set_title("Histogram över sjukdomsförekomst")
+
+    counts = [(df["disease"] == i).sum() for i in [0, 1]]
+    for count, patch in zip(counts, ax.patches):
+        ax.text(patch.get_x() + patch.get_width() / 2, count + 0.5, str(int(count)), ha="center", va="bottom")
+
 
     plt.tight_layout()
     plt.show()

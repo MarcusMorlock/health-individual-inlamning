@@ -1,7 +1,7 @@
 import pandas as pd
 from .io_utiles import load_csv_file
 from .metrics import(summery_of_csv, summery_of_csv_per_gender,smoker_per_gender,bootstrap_ci,sim_des)
-from .viz import(viz_smoker_per_gender,viz_weight_per_gender,viz_weight_vs_height)
+from .viz import(viz_smoker_per_gender,viz_disease_per_gender,viz_weight_vs_height)
 
 
 class HealthAnalyser:
@@ -37,9 +37,9 @@ class HealthAnalyser:
 
         return viz_smoker_per_gender(self.df)
     
-    def viz_weight_per_gender(self):
+    def viz_disease_per_gender(self):
         
-        return viz_weight_per_gender(self.df)
+        return viz_disease_per_gender(self.df)
     
     def viz_weight_vs_height(self):
 
