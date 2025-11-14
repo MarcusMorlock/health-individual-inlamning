@@ -45,3 +45,14 @@ def bootstrap_ci(df: pd.DataFrame,subject_to_test_in_df: str,n_boot:int = 1000):
 
 
     return lower, higher
+
+def sim_des(df: pd.DataFrame, seed:int = 519, number_sims:int = 1000):
+
+    real_prob = df["disease"].mean()
+
+    np.random.seed(seed)
+
+    simulated = np.random.choice([0, 1], size=number_sims, p=[1-real_prob, real_prob])
+    sim_prob = simulated.mean()
+
+    return real_prob, sim_prob
