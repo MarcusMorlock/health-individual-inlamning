@@ -28,6 +28,8 @@ def smoker_per_gender(df: pd.DataFrame) -> pd.DataFrame:
     
     return smoker_per_gender
 
+## Testing data
+
 def bootstrap_ci(df: pd.DataFrame,subject_to_test_in_df: str,n_boot:int = 1000):
 
     bp = df[subject_to_test_in_df].values
@@ -56,3 +58,17 @@ def sim_des(df: pd.DataFrame, seed:int = 519, number_sims:int = 1000):
     sim_prob = simulated.mean()
 
     return real_prob, sim_prob
+
+def smoker_systolic_bp_correlation_test(df: pd.DataFrame):
+
+    smokers_bp = df.loc[df["smoker"] == "Yes", "systolic_bp"]
+    nonsmokers_bp = df.loc[df["smoker"] == "No", "systolic_bp"]
+
+    t_stat, p_value = stats.ttest_ind(smokers_bp, nonsmokers_bp, equal_var=False)
+
+    if t_stat > 0:
+        p_valu_one_sided = p_value / 2
+    else:
+        p_valu_one_sided = 1 - (p_value / 2)
+
+    return t_stat, p_valu_one_sided
