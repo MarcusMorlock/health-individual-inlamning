@@ -19,13 +19,25 @@ def viz_smoker_per_gender(df :pd.DataFrame) -> plt.subplots:
 
     fig, ax = plt.subplots(figsize=(6,5))
 
-    ax.bar(x, Total, width=width, label="Total")
-    ax.bar(x, Smokers, width=width, label="Smokers")
+    bars_total  = ax.bar(x, Total, width=width, label="Total", color="steelblue")
+    bars_smoker = ax.bar(x, Smokers, width=width, label="Smokers", color="orange")
+
     ax.set_title("Smoker per Gender")
     ax.set_xticks(x)
     ax.set_xticklabels(Sexes)
     ax.grid(True, axis="y", alpha=0.3, color="black")
     ax.legend()
+
+    for bar in bars_total:
+        height = bar.get_height()
+        ax.text(bar.get_x() + bar.get_width()/2, height +5,
+                str(int(height)), ha="center", va="bottom", color="steelblue")
+        
+        
+    for bar in bars_smoker:
+        height = bar.get_height()
+        ax.text(bar.get_x() + bar.get_width()/2, height +5,
+                str(int(height)), ha="center", va="bottom", color="orange")  
 
     plt.tight_layout()
 
