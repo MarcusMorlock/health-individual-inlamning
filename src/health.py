@@ -9,7 +9,11 @@ from .metrics import(
     smoker_systolic_bp_correlation_test,
     regression_bp
     )
-from .viz import(viz_smoker_per_gender,viz_disease_per_gender,viz_weight_vs_height)
+from .viz import(viz_smoker_per_gender,
+                 viz_disease_per_gender,
+                 viz_weight_vs_height,
+                 viz_bp_vs_age
+                 )
 
 
 class HealthAnalyser:
@@ -63,4 +67,8 @@ class HealthAnalyser:
     def viz_weight_vs_height(self):
 
         return viz_weight_vs_height(self.df)
+    
+    def viz_bp_vs_age(self):
+
+        return viz_bp_vs_age(self.df)
     

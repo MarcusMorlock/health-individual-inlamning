@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
+from sklearn.linear_model import LinearRegression
 from .metrics import (summery_of_csv,smoker_per_gender,summery_of_csv_per_gender)
 
 
@@ -119,4 +120,29 @@ def viz_weight_vs_height(df: pd.DataFrame) -> plt.subplots:
 
     return fig, ax
 
+def viz_bp_vs_age(df: pd.DataFrame) -> plt.subplots:
+
+    X = df[["age"]].values
+    Y = df["systolic_bp"].values
+
+    model = LinearRegression()
+    model.fit(X, Y)
+    
+    intercept = float(model.intercept_)
+    slope = float(model.coef_[0])
+
+    fig, ax = plt.subplots(figsize=(6, 5))
+
+    ax.scatter(X[:,0], Y, alpha=0.6)
+    x_line = np.linspace(X.min(), X.max(), 100)
+    y_line = intercept + slope * x_line
+    ax.plot(x_line, y_line, color="black")
+    ax.set_xlabel("Age")
+    ax.set_ylabel("Systolic_Bp")
+    ax.set_title("Systolic_Bp increase over age")
+
+    plt.tight_layout()
+    plt.show()
+
+    return fig, ax
 

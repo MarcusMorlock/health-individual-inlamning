@@ -103,6 +103,8 @@ def regression_bp (df: pd.DataFrame):
     return {
         "model": model,
         "coef": coef,
+        "age": coef[0],
+        "weight": coef[1],
         "intercept": intercept,
         "r2": r2,
         "n": len(df)
