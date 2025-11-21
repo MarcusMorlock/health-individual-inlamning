@@ -1,6 +1,14 @@
 import pandas as pd
 from .io_utiles import load_csv_file
-from .metrics import(summery_of_csv, summery_of_csv_per_gender,smoker_per_gender,bootstrap_ci,sim_des,smoker_systolic_bp_correlation_test)
+from .metrics import(
+    summery_of_csv,
+    summery_of_csv_per_gender,
+    smoker_per_gender,
+    bootstrap_ci,
+    sim_des,
+    smoker_systolic_bp_correlation_test,
+    regression_bp
+    )
 from .viz import(viz_smoker_per_gender,viz_disease_per_gender,viz_weight_vs_height)
 
 
@@ -35,6 +43,12 @@ class HealthAnalyser:
     def smoker_systolic_bp_correlation_test(self):
         
         return smoker_systolic_bp_correlation_test(self.df)
+
+    #########
+
+    def regression_bp(self):
+        
+        return regression_bp(self.df)
 
     #########
     
