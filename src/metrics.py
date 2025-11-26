@@ -75,6 +75,21 @@ def smoker_per_gender(df: pd.DataFrame) -> pd.DataFrame:
 
 def bootstrap_ci(df: pd.DataFrame,subject_to_test_in_df: str,n_boot:int = 1000):
 
+    """
+    Estimate a 95% confidence interval for the mean of a column within a **DataFrame** using bootstrap resampling.
+
+        **Requirements:** 
+
+            subject_to_test_in_df: the column within the dataframe to be tested.
+            df: the dataframe.
+
+        **Explanation:**
+            n_boot: the range of the test, default set at 1000.
+
+        **Return:**
+            Float: lower and higher bounds of the 95% confidence interval for the mean of the selected column.
+    """
+
     bp = df[subject_to_test_in_df].values
 
     np.random.seed(519)
@@ -151,3 +166,12 @@ def regression_bp (df: pd.DataFrame):
         "r2": r2,
         "n": len(df)
     }
+
+    """
+    .
+
+        **Requirements:** 
+            .
+        **Return:**
+            .
+    """
