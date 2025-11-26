@@ -23,20 +23,71 @@ class HealthAnalyser:
 
 
     def summery_of_csv_per_gender(self):
+        """
+        descriptive statistics of requirements columns from **DataFrame**.
 
+        Requirements:
+            The DataFrame must contain the following columns:
+                - "age"
+                - "height"
+                - "weight"
+                - "systolic_bp"
+                - "cholesterol"
+
+        **Returns:**
+        a new dataframe with: sum, mean, median, std, min, max. of columns from original.
+        """
         return summery_of_csv_per_gender(self.df)
     
 
     def summery_of_csv(self):
-        
+        """
+        descriptive statistics of requirements columns from **DataFrame** groupby "sex".
+
+        Requirements:
+            The DataFrame must contain the following columns:
+                - "sex"
+                - "age"
+                - "height"
+                - "weight"
+                - "systolic_bp"
+                - "cholesterol"
+
+        **Returns:**
+        a new dataframe with: mean, median, std, min, max. of columns from original groupby "sex".
+        """
         return summery_of_csv(self.df)
     
     def smoker_per_gender(self):
+        """
+        Calculate Total amount of individuals and number of smokers per gender in a **DataFrame**.
 
+        **Requirements:**
+            Columns "sex" and "smoker"
+
+        **Returns:**
+            New DataFrame grouped by 
+            Total: total number of individuals per "sex" 
+            Smokers: number of "smokers" per "sex"
+        """
         return smoker_per_gender(self.df)
     #########
     
     def bootstrap_ci(self, subject_to_test_in_df: str,n_boot:int = 1000):
+        """
+        Estimate a 95% confidence interval for the mean of a column within a **DataFrame** using bootstrap resampling.
+
+            **Requirements:** 
+
+                subject_to_test_in_df: the column within the dataframe to be tested.
+                df: the dataframe.
+
+            **Explanation:**
+                n_boot: the range of the test, default set at 1000.
+
+            **Return:**
+                Float: lower and higher bounds of the 95% confidence interval for the mean of the selected column.
+        """
 
         return bootstrap_ci(self.df,subject_to_test_in_df,n_boot)
     
