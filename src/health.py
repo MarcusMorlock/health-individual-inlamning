@@ -24,24 +24,6 @@ class HealthAnalyser:
 
     def summery_of_csv_per_gender(self):
         """
-        descriptive statistics of requirements columns from **DataFrame**.
-
-        Requirements:
-            The DataFrame must contain the following columns:
-                - "age"
-                - "height"
-                - "weight"
-                - "systolic_bp"
-                - "cholesterol"
-
-        **Returns:**
-        a new dataframe with: sum, mean, median, std, min, max. of columns from original.
-        """
-        return summery_of_csv_per_gender(self.df)
-    
-
-    def summery_of_csv(self):
-        """
         descriptive statistics of requirements columns from **DataFrame** groupby "sex".
 
         Requirements:
@@ -55,6 +37,24 @@ class HealthAnalyser:
 
         **Returns:**
         a new dataframe with: mean, median, std, min, max. of columns from original groupby "sex".
+        """
+        return summery_of_csv_per_gender(self.df)
+    
+
+    def summery_of_csv(self):
+        """
+        descriptive statistics of requirements columns from **DataFrame**.
+
+        Requirements:
+            The DataFrame must contain the following columns:
+                - "age"
+                - "height"
+                - "weight"
+                - "systolic_bp"
+                - "cholesterol"
+
+        **Returns:**
+        a new dataframe with: sum, mean, median, std, min, max. of columns from original.
         """
         return summery_of_csv(self.df)
     
