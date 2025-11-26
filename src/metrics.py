@@ -107,6 +107,20 @@ def bootstrap_ci(df: pd.DataFrame,subject_to_test_in_df: str,n_boot:int = 1000):
     return lower, higher
 
 def sim_des(df: pd.DataFrame, seed:int = 519, number_sims:int = 1000):
+    """
+    Runs a simulation to try and determine the probability the result is made up by chance.
+
+        **Requirements:** 
+            DataFrame: Column "disease" within the DataFrame.
+            "disease: 1 or 0 to represent bool true or false.
+
+        **Explanation:**
+            seed: the np random seed selected, default = 519.
+            number_sims: the amount of simulations ran
+
+        **Return:**
+            real_prob(real probability), sim_prob(simulated probability).
+    """
 
     real_prob = df["disease"].mean()
 
@@ -118,6 +132,17 @@ def sim_des(df: pd.DataFrame, seed:int = 519, number_sims:int = 1000):
     return real_prob, sim_prob
 
 def smoker_systolic_bp_correlation_test(df: pd.DataFrame):
+    """
+    Perform a one-sided independent t-test comparing systolic_bp between smokers and non-smokers.
+
+        **Requirements:** 
+            DataFrame:
+                - "smoker": String with "yes" and "no".
+                - "systolic_bp": Float representing the blood pressure of individuals.
+        **Return:**
+            - t_stat: the t-statistics from the independent t-test.
+            - p_value_one_sided: the one-sided p-value indicating significance of the difference.
+    """
 
     smokers_bp = df.loc[df["smoker"] == "Yes", "systolic_bp"]
     nonsmokers_bp = df.loc[df["smoker"] == "No", "systolic_bp"]
@@ -125,15 +150,35 @@ def smoker_systolic_bp_correlation_test(df: pd.DataFrame):
     t_stat, p_value = stats.ttest_ind(smokers_bp, nonsmokers_bp, equal_var=False)
 
     if t_stat > 0:
-        p_valu_one_sided = p_value / 2
+        p_value_one_sided = p_value / 2
     else:
-        p_valu_one_sided = 1 - (p_value / 2)
+        p_value_one_sided = 1 - (p_value / 2)
 
-    return t_stat, p_valu_one_sided
+    return t_stat, p_value_one_sided
 
 # Linjer Algebra 
 
 def regression_bp (df: pd.DataFrame):
+    """
+    A linear regression model to predict systolic_bp using age and weight.
+
+        **Requirements:** 
+            DataFrame with columns:
+            - "age": age of individuals.
+            - "weight": weight of individuals.
+            - "systolic_bp": the systolic_bp of individuals.
+
+        **Return:**
+            dict:
+            - "model": the fitted LinearRegression model.
+            - "coef": array of regression coefficients.
+            - "age": coefficients for age.
+            - "weight": coefficients for weight.
+            - "intercept": regression intercept.
+            - "r2": R^2 score.
+            - "n": number of observations in the DataFrame.
+    """
+    
 
     # X = förklarande variabler (features)
     # Y = målfunktion (target)
@@ -167,11 +212,3 @@ def regression_bp (df: pd.DataFrame):
         "n": len(df)
     }
 
-    """
-    .
-
-        **Requirements:** 
-            .
-        **Return:**
-            .
-    """
