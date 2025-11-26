@@ -59,27 +59,17 @@ def viz_smoker_per_gender(df :pd.DataFrame) -> plt.subplots:
     return fig, ax
 
 def viz_disease_per_gender(df: pd.DataFrame) -> plt.subplots:
+    """
+    Visualize disease per gender with a histogram.
 
-    # fig, ax = plt.subplots(figsize=(6, 5))
-
-    # ax.hist(df["disease"], bins=2, color="orange", edgecolor="black", alpha=0.5 )
-
-    # sexes = df["sex"].unique()
-    # colors = ["orange", "blue"]
-
-    # for sex, color in zip(sexes, colors):
-    #     subset = df[df["sex"] == sex]["disease"]
-    #     ax.hist(subset, bins=[-0.5, 0.5, 1.5], alpha=0.5, color=color, edgecolor="black", label=f"Kön: {sex}")
-
-    # ax.set_xticks([0, 1])
-    # ax.set_xticklabels(["Frisk", "Sjuk"])
-    # ax.set_xlabel("Status")
-    # ax.set_ylabel("Antal personer")
-    # ax.set_title("Histogram över sjukdomsförekomst")
-
-    # counts = [(df["disease"] == i).sum() for i in [0, 1]]
-    # for count, patch in zip(counts, ax.patches):
-    #     ax.text(patch.get_x() + patch.get_width() / 2, count + 0.5, str(int(count)), ha="center", va="bottom")
+    **Requirements:** 
+        DataFrame with Columns:
+        "sex": with two different types.
+        "disease": bool 1 or 0. 1 for yes and 0 for no.
+    
+    **Return:**
+        fig, ax based on matplotlib as a histogram to visualize disease per gender.
+    """
 
     d = df.copy()
     d["disease"] = d["disease"].astype(int)
@@ -117,6 +107,18 @@ def viz_disease_per_gender(df: pd.DataFrame) -> plt.subplots:
     return fig, axes
 
 def viz_weight_vs_height(df: pd.DataFrame) -> plt.subplots:
+    """
+    Visualize weight vs height with a scatter plot.
+
+        **Requirements:** 
+            DataFrame with Columns:
+            "sex": with two different types.
+            "weight": Float representing weight.
+            "height": Float representing height.
+        
+        **Return:**
+            fig, ax based on matplotlib as a scatter plot with weight and height split by gender(red = Female, blue = Male).
+    """
     fig, ax = plt.subplots(figsize=(6, 5))
 
     colors = {"F": "red", "M": "blue"}
@@ -135,6 +137,18 @@ def viz_weight_vs_height(df: pd.DataFrame) -> plt.subplots:
     return fig, ax
 
 def viz_bp_vs_age(df: pd.DataFrame) -> plt.subplots:
+    """
+    Visualize systolic_bp vs age and it´s trend with a scatter plot.
+
+        **Requirements:** 
+            DataFrame with Columns:
+            "age": int with age.
+            "systolic_bp": Float with the systolic_bp. 
+        
+        **Return:**
+            fig, ax based on matplotlib as a scatter plot with Age and systolic_bp with an line show casing its trend.
+    """
+
 
     X = df[["age"]].values
     Y = df["systolic_bp"].values

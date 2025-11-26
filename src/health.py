@@ -73,14 +73,49 @@ class HealthAnalyser:
         return viz_smoker_per_gender(self.df)
     
     def viz_disease_per_gender(self):
+        """
+        Visualize disease per gender with a histogram.
+
+        **Requirements:** 
+            DataFrame with Columns:
+            "sex": with two different types.
+            "disease": bool 1 or 0. 1 for yes and 0 for no.
+        
+        **Return:**
+            fig, ax based on matplotlib as a histogram to visualize disease per gender.
+        """
         
         return viz_disease_per_gender(self.df)
+
     
     def viz_weight_vs_height(self):
+        """
+        Visualize weight vs height with a scatter plot.
+
+            **Requirements:** 
+                DataFrame with Columns:
+                "sex": with two different types.
+                "weight": Float representing weight.
+                "height": Float representing height.
+        
+            **Return:**
+                fig, ax based on matplotlib as a scatter plot with weight and height split by gender(red = Female, blue = Male).
+        """
 
         return viz_weight_vs_height(self.df)
     
     def viz_bp_vs_age(self):
+        """
+        Visualize systolic_bp vs age and it´s trend with a scatter plot.
+
+            **Requirements:** 
+                DataFrame with Columns:
+                "age": int with age.
+                "systolic_bp": Float with the systolic_bp. 
+            
+            **Return:**
+                fig, ax based on matplotlib as a scatter plot with Age and systolic_bp with an line show casing its trend.
+        """
 
         return viz_bp_vs_age(self.df)
     
