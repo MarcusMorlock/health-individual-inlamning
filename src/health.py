@@ -58,6 +58,18 @@ class HealthAnalyser:
     
     def viz_smoker_per_gender(self):
 
+        """
+        Visualize smokers per gender with two bars using smoker_per_gender funktion in metrics.py.
+
+        **Requirements:** 
+            DataFrame with Columns:
+            "sex": with two different types.
+            "smoker": yes or no if they are a smoker.
+        
+        **Return:**
+            fig, ax based on matplotlib with two bars to visualize smokers per gender.
+        """
+
         return viz_smoker_per_gender(self.df)
     
     def viz_disease_per_gender(self):

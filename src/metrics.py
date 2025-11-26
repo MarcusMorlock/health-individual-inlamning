@@ -24,6 +24,18 @@ def summery_of_csv_per_gender(df: pd.DataFrame) -> pd.DataFrame:
     return summery_per_gender
 
 def smoker_per_gender(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Calculate Total amount of individuals and number of smokers per gender in a **DataFrame**.
+
+    **Requirements:**
+        Columns "sex" and "smoker"
+
+    **Returns:**
+        New DataFrame grouped by 
+        Total: total number of individuals per "sex" 
+        Smokers: number of "smokers" per "sex"
+    """
+    
     df["smokers_flaged"] = df["smoker"].map({"Yes": 1, "No": 0})
     smoker_per_gender = df.groupby("sex").agg(Total=("sex", "count"), Smokers=("smokers_flaged", "sum"))
     

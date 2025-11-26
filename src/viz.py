@@ -9,6 +9,20 @@ def viz_summery(df :pd.DataFrame):
     return NotImplemented
 
 def viz_smoker_per_gender(df :pd.DataFrame) -> plt.subplots:
+    """
+    Visualize smokers per gender with two bars using smoker_per_gender funktion in metrics.py.
+
+    **Requirements:** 
+        DataFrame with Columns:
+        "sex": with two different types.
+        "smoker": yes or no if they are a smoker.
+    
+    **Return:**
+        fig, ax based on matplotlib with two bars to visualize smokers per gender.
+
+    """
+
+
     smokers = smoker_per_gender(df)
 
     Sexes = smokers.index
