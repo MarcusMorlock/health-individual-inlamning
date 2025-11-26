@@ -8,6 +8,21 @@ from sklearn.linear_model import LinearRegression
 # columns = ["age","sex","height","weight","systolic_bp","cholesterol","smoker","disease"]
 
 def summery_of_csv(df: pd.DataFrame) -> pd.DataFrame:
+
+    """
+    descriptive statistics of requirements columns from **DataFrame**.
+
+    Requirements:
+        The DataFrame must contain the following columns:
+            - "age"
+            - "height"
+            - "weight"
+            - "systolic_bp"
+            - "cholesterol"
+
+    **Returns:**
+       a new dataframe with: sum, mean, median, std, min, max. of columns from original.
+    """
     
     columns = ["age", "height", "weight", "systolic_bp", "cholesterol"]
 
@@ -16,6 +31,21 @@ def summery_of_csv(df: pd.DataFrame) -> pd.DataFrame:
     return summery_of_csv
 
 def summery_of_csv_per_gender(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    descriptive statistics of requirements columns from **DataFrame** groupby "sex".
+
+    Requirements:
+        The DataFrame must contain the following columns:
+            - "sex"
+            - "age"
+            - "height"
+            - "weight"
+            - "systolic_bp"
+            - "cholesterol"
+
+    **Returns:**
+       a new dataframe with: mean, median, std, min, max. of columns from original groupby "sex".
+    """
     
     columns = ["age", "height", "weight", "systolic_bp", "cholesterol"]
     
