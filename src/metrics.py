@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from scipy import stats
+from sklearn.linear_model import LinearRegression
 
 # age,sex,height,weight,systolic_bp,cholesterol
 # id,age,sex,height,weight,systolic_bp,cholesterol,smoker,disease
@@ -72,3 +73,39 @@ def smoker_systolic_bp_correlation_test(df: pd.DataFrame):
         p_valu_one_sided = 1 - (p_value / 2)
 
     return t_stat, p_valu_one_sided
+
+# Linjer Algebra 
+
+def regression_bp (df: pd.DataFrame):
+
+    # X = förklarande variabler (features)
+    # Y = målfunktion (target)
+    # X = det du vill använda för att förklara eller förutsäga något
+    # Y = det du vill förutsäga eller analysera
+
+
+    X = df[["age", "weight"]].values
+    Y = df["systolic_bp"].values
+
+    model = LinearRegression()
+    model.fit(X, Y)
+
+    coef = model.coef_      # [β1, β2] → hur mycket age och weight påverkar blodtrycket
+    intercept = model.intercept_ # β0 → grundvärde när age=0 och weight=0
+    
+
+
+    r2 = model.score(X, Y) # R² → hur bra modellen förklarar variationen i Y
+    # R² = 0 → modellen förklarar ingenting. Den är lika bra som att bara gissa medelvärdet.
+    # R² = 1 → modellen förklarar all variation perfekt (alla punkter ligger exakt på linjen).
+    # R² = 0.405 → modellen förklarar ca 40 % av variationen i blodtrycksvärdena. Resten (60 %) beror på andra faktorer som inte finns med i modellen (t.ex. gener, stress, kost, sjukdomar).
+
+    return {
+        "model": model,
+        "coef": coef,
+        "age": coef[0],
+        "weight": coef[1],
+        "intercept": intercept,
+        "r2": r2,
+        "n": len(df)
+    }
